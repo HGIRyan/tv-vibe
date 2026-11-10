@@ -1,4 +1,38 @@
-# Contributing
+# Extend TV Vibe
+
+Contributions should make this fork useful on more TVs without replacing someone else's setup.
+
+- **A new look:** add `themes/<your-name>/config.json` and any redistributable artwork. Keep personal pictures and unlicensed downloads local.
+- **A new device:** add `examples/<brand-model>/` with model, OS/firmware, remote key codes, install/rollback steps, what you tested, and known limits. Exclude serial numbers, accounts, IP addresses, pairing keys, and raw device dumps.
+- **A feature:** use an existing configuration option when possible. For device-specific behavior add a small opt-in setting; keep the tested TCL behavior working. There is no extension/plugin framework to implement first.
+- **A fix:** modify the shared code when that is the right solution. "Extend" is a collaboration preference, not a ban on fixes or an assumption that a subfolder changes behavior by itself.
+
+## Send updates back
+
+Fork **HGIRyan/tv-vibe**, start from its **tv-vibe** branch, and use a separate branch for your addition:
+
+```bash
+git clone --branch tv-vibe https://github.com/YOUR-USERNAME/tv-vibe.git
+cd tv-vibe
+git remote add family https://github.com/HGIRyan/tv-vibe.git
+git fetch family
+git switch -c extend/my-device family/tv-vibe
+# Add your theme, profile, or optional feature, then commit only those files.
+git push -u origin extend/my-device
+```
+
+Open a pull request with base **HGIRyan/tv-vibe:tv-vibe**. Explain the model, what changed, how it was tested, and rollback/limitations. Merge accepted shared improvements back; keep personal defaults in your own theme/profile. Do not force-push someone else's branch or replace the fork with an unrelated project snapshot.
+
+## Check your change
+
+Build with `launcher/gradlew -p launcher :app:testDebugUnitTest :app:assembleRelease`. Test D-pad focus and Back on the affected screen. The optional device smoke test is `TV_HOST=... tools/venv/bin/python -I mytv/test-recent-switcher.py` after physically opening Recent apps; it opens one app but does not close any. Include a screenshot that contains no private content.
+
+Keep secrets, local photos, generated APKs, debug/signing keys, backups, and downloaded speech models out of commits. The original MIT license and Gathin attribution stay intact.
+
+---
+
+## Original upstream contribution guidance
+
 
 Thanks for helping more TVs lose their ads. Three kinds of contributions are especially welcome.
 

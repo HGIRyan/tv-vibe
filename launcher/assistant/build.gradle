@@ -1,0 +1,39 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'com.gathin.tvassistant'
+    compileSdk 34
+    defaultConfig {
+        applicationId 'com.gathin.tvassistant'
+        minSdk 34
+        targetSdk 34
+        versionCode 2
+        versionName '0.2'
+        // Saved QM6K getprop reports only 32-bit ARM. Override for other devices/emulators.
+        ndk { abiFilters.addAll((project.findProperty('assistantAbis') ?: 'armeabi-v7a').split(',')) }
+    }
+    buildTypes {
+        release { signingConfig signingConfigs.debug }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    androidResources { noCompress += ['fst', 'mdl', 'int', 'carpa'] }
+}
+
+tasks.register('verifyWakeModel') {
+    doLast {
+        if (!file('src/main/assets/wake-model/am/final.mdl').isFile()) {
+            throw new GradleException('Run python3 ../mytv/prepare-wake-model.py from launcher/ before building Hey TV.')
+        }
+    }
+}
+tasks.named('preBuild').configure { dependsOn 'verifyWakeModel' }
+
+dependencies {
+    implementation 'com.alphacephei:vosk-android:0.3.75@aar'
+    implementation 'net.java.dev.jna:jna:5.18.1@aar'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.json:json:20240303'
+}

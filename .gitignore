@@ -8,3 +8,16 @@ launcher/local.properties
 # your own TV's dumps (serial, android_id, device names) stay local
 backup/
 .DS_Store
+
+# Private local configuration and generated files
+.secrets/
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.apk
+backup/
+mytv/photo-cache/
+launcher/assistant/build/
+launcher/assistant/src/main/assets/wake-model/

@@ -9,20 +9,23 @@
 
     <!-- Apps pinned to the dock row at the bottom, in this order. Missing apps are skipped. -->
     <string-array name="dock_apps">
+        <item>com.google.android.youtube.tv</item>
         <item>com.netflix.ninja</item>
         <item>com.amazon.amazonvideo.livingroom</item>
-        <item>com.google.android.youtube.tv</item>
-        <item>in.startv.hotstar</item>
+        <item>com.disney.disneyplus</item>
+        <item>com.apple.atve.androidtv.appletv</item>
+        <item>com.wbd.stream</item>
     </string-array>
 
     <!-- Apps never shown as tiles (e.g. the Live TV app, which the Inputs menu already covers). -->
     <string-array name="hidden_apps">
-        <item>com.mediatek.wwtv.tvcenter</item>
-        <item>com.mitv.gallery</item>
+        <item>com.tcl.tv</item>
+        <item>com.tcl.dashboard</item>
+        <item>com.tcl.suspension</item>
     </string-array>
 
     <!-- The TV's Live TV / tuner app, offered at the end of the Inputs menu. Leave empty to omit. -->
-    <string name="live_tv_package" translatable="false">com.mediatek.wwtv.tvcenter</string>
+    <string name="live_tv_package" translatable="false">com.tcl.tv</string>
 
     <!-- Some TVs give their Live TV app no leanback entry point at all, so `live_tv_package` above
          resolves to nothing (TCL Android TV 9 on China-market sets is one). This action is then sent
@@ -52,7 +55,7 @@
 
     <!-- Tiles per row in the grid; the dock always has this many slots. Tiles are 180dp wide at 4 columns and
          shrink to fit from 5 up (about 144dp at 5, 117dp at 6 on a 1080p TV). -->
-    <integer name="columns">4</integer>
+    <integer name="columns">6</integer>
 
     <!-- "Default home" tile that opens Android's home-screen picker, for TVs whose settings have one
          (most Android TVs don't; the tile only appears when the page exists). Off by default. -->
@@ -61,4 +64,17 @@
     <!-- Module cards: an app that declares a card (docs/specs/card.md) can stand in for its tile with its own
          label, caption and glow colour, once you answer Show on the prompt. false: never look for cards or ask. -->
     <bool name="module_cards">true</bool>
+
+    <!-- Reduced motion: for TVs whose GPU cannot keep up (MediaTek MT5895 on Android 10 is the known case).
+         true keeps the GPU drawing path but calms the movement: a stiff highlight spring with no bounce,
+         tiles that zoom without overshoot, shorter fades and no tile entrance when Home comes back. Set it
+         here or with "reduced_motion": true in a theme's config.json; false keeps the normal motion. -->
+    <bool name="reduced_motion">false</bool>
+
+    <!-- Per-app TV audio delay (see AudioDelayProfiles.java). One item per app: "package|slot=value,slot=value",
+         or "package|*=value" for every slot. Applied while the app is in front, original restored on leaving.
+         Values are what the TV's tcl_app_setting_audio_delay slots take (negative = audio earlier, untested).
+         To add an app, add one item. Hulu is set to 0 (no change) because testing found the TV does not act on this setting. -->
+    <string-array name="audio_delay_profiles">
+    </string-array>
 </resources>

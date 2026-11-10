@@ -1,0 +1,23 @@
+{
+  "source": "Apps reported by the user in the imported Claude session; packages checked against the 2026-10-19 backup. This is a laptop snapshot, not live discovery.",
+  "apps": [
+    {"id":"OPEN_PRIME","name":"Prime Video","package":"com.amazon.amazonvideo.livingroom","aliases":["Amazon Prime","Amazon Prime Video"]},
+    {"id":"OPEN_APPLE_TV","name":"Apple TV","package":"com.apple.atve.androidtv.appletv","aliases":["Apple TV Plus"]},
+    {"id":"OPEN_PARAMOUNT","name":"Paramount+","package":"com.cbs.ott","aliases":["Paramount Plus","Paramount"]},
+    {"id":"OPEN_DISNEY","name":"Disney+","package":"com.disney.disneyplus","aliases":["Disney Plus","Disney"]},
+    {"id":"OPEN_PLAY_GAMES","name":"Google Play Games","package":"com.google.android.play.games","aliases":["Play Games","Google Games"]},
+    {"id":"OPEN_GOOGLE_TV","name":"Google TV Movies","package":"com.google.android.videos","aliases":["Google TV","Google Play Movies","Movies"]},
+    {"id":"OPEN_YOUTUBE","name":"YouTube","package":"com.google.android.youtube.tv","aliases":[]},
+    {"id":"OPEN_YOUTUBE_MUSIC","name":"YouTube Music","package":"com.google.android.youtube.tvmusic","aliases":[]},
+    {"id":"OPEN_YOUTUBE_TV","name":"YouTube TV","package":"com.google.android.youtube.tvunplugged","aliases":[]},
+    {"id":"OPEN_HULU","name":"Hulu","package":"com.hulu.livingroomplus","aliases":[]},
+    {"id":"OPEN_NETFLIX","name":"Netflix","package":"com.netflix.ninja","aliases":[]},
+    {"id":"OPEN_PEACOCK","name":"Peacock","package":"com.peacocktv.peacockandroid","aliases":["Peacock TV"]},
+    {"id":"OPEN_PLEX","name":"Plex","package":"com.plexapp.android","aliases":[]},
+    {"id":"OPEN_TUBI","name":"Tubi","package":"com.tubitv","aliases":["Tubi TV"]},
+    {"id":"OPEN_MAX","name":"Max","package":"com.wbd.stream","aliases":["HBO","HBO Max"]},
+    {"id":"OPEN_DOWNLOADER","name":"Downloader","package":"com.esaba.downloader","aliases":[]},
+    {"id":"OPEN_TCL_BROWSER","name":"TCL Browser","package":"com.tcl.browser","aliases":["Browser","Web browser"]},
+    {"id":"OPEN_ALEXA","name":"Alexa","package":"com.tcl.smartalexa","aliases":["Amazon Alexa"]}
+  ]
+}
